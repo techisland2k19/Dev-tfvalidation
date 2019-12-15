@@ -1,7 +1,3 @@
-#variable "project_id" {
-  #description = "The project id for where the VPC will reside"
-  # default= "cp100-225420"
-#}
 
 variable "name" {
     description = "The name of the VPC beig created."
@@ -108,94 +104,6 @@ variable source_ranges {
   type        = "list"
 default =["0.0.0.0/0"]
 }
-
-
-/******************************************
-	not tested yet
-
-subnets = [
-    {
-      subnet_name           = "test-network-01-subnet-01"
-      subnet_ip             = "10.10.10.0/24"
-      subnet_region         = "us-west1"
-      subnet_private_access = "false"
-      subnet_flow_logs      = "true"
-    },
-    {
-      subnet_name           = "test-network-01-subnet-02"
-      subnet_ip             = "10.10.20.0/24"
-      subnet_region         = "us-west1"
-      subnet_private_access = "false"
-      subnet_flow_logs      = "true"
-    },
-
-variable "secondary_ranges" {
-  type        = "map"
-  description = "Secondary ranges that will be used in some of the subnets"
-}
-
-secondary_ranges = {
-    subnet-01 = [
-      {
-        range_name    = "subnet-01-secondary-01"
-        ip_cidr_range = "192.168.64.0/24"
-      },
- {
-        range_name    = "test-network-01-subnet-01-02"
-        ip_cidr_range = "192.168.65.0/24"
-      },
-    ]
-
-    subnet-02 = []
-    test-network-01-subnet-02 = [
-{
-        range_name    = "test-network-01-subnet-02-01"
-        ip_cidr_range = "192.168.74.0/24"
-      },
-  }
-
-
-
-variable "routes" {
-  type        = "list"
-  description = "List of routes being created in this VPC"
-  default     = []
-}
-
-routes = [
-    {
-      name             = "egress-inet"
-      description      = "route through IGW to access internet"
-      dest_range       = "0.0.0.0/0"
-      tags             = "egress-inet"
-      next_hop_gateway = "true"
-    },
-  ]
-
-routes = [
-    {
-      name              = "egress-inet"
-      description       = "route through IGW to access internet"
-      destination_range = "0.0.0.0/0"
-      tags              = "egress-inet"
-      next_hop_gateway  = "true"
-    },
-    {
-      name              = "app-proxy"
-      description       = "route through proxy to reach app"
-      destination_range = "10.50.10.0/24"
-      tags              = "app-proxy"
-      next_hop_ip       = "10.10.40.10"
-    },
-  ]
-
-variable "shared_vpc_host" {
-  type        = "string"
-  description = "Makes this project a Shared VPC host if 'true' (default 'false')"
-  default     = "false"
-}
-
- *****************************************/
 
 variable "names" {
   description = "Names of the buckets to create in module."
