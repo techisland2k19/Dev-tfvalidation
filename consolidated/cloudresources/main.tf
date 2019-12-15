@@ -1,6 +1,6 @@
 provider "google" {
   credentials = "${file("/workspace/key.json")}"
-  project = "p-02-08-19-gcp-lab-admin4"
+  project =  "${var.project}"
   zone= "us-east1-c"
 }
 
@@ -61,7 +61,7 @@ resource "google_compute_instance" "vm_instance" {
     # A default network is created for all GCP projects
     network       = "${google_compute_network.default.self_link}"
     subnetwork = "${google_compute_subnetwork.default.*.name[0]}"
-  subnetwork_project = "p-02-08-19-gcp-lab-admin4" 
+  subnetwork_project = "${var.project}"
    access_config  {
     }
   }
@@ -82,7 +82,7 @@ project = "${var.project}"
     # A default network is created for all GCP projects
     network       = "${google_compute_network.default.self_link}"
   subnetwork = "${google_compute_subnetwork.default.*.name[0]}"   
-  subnetwork_project = "p-02-08-19-gcp-lab-admin4" 
+  subnetwork_project =  "${var.project}"
 access_config  {
     }
   }
@@ -95,8 +95,8 @@ resource "google_project_iam_binding" "iam_based_roles" {
   role    = "roles/editor"
 
   members = [
-    "user:zubair.munir17@gmail.com",
-    "user:learningtech2k19@gmail.com",
+    "user:abc17@gmail.com",
+    "user:learningtech@gmail.com",
   ]
 }
 
@@ -116,7 +116,7 @@ resource "google_sql_database_instance" "test_ins" {
   
 module "cloud_storage" {
   source               = "terraform-google-modules/cloud-storage/google"
-  project_id            = "p-02-08-19-gcp-lab-admin4"
+  project_id            =  "${var.project}"
   names                = ["${var.project}-vli08"]
   prefix               = "b01"
   location             = "US"
@@ -138,8 +138,8 @@ resource "google_storage_bucket_iam_binding" "binding" {
  resource "google_storage_bucket" "bk_validate" {
   name     = "bkt-validator-023"
   location = "EU"
-  project = "p-02-08-19-gcp-lab-admin4"
+  project =  "${var.project}"
   logging {
-  log_bucket = "b01-us-p-02-08-19-gcp-lab-admin4-vli08"
+  log_bucket = "b01-us-${var.project}-vli08"
         }
 }
