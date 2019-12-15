@@ -75,7 +75,7 @@ steps:
                 #terraform destroy -auto-approve  # can't use "tfplanoutput.tfplan" in destory.will get info from remote state at gcs
             fi
       else
-        echo " Relevant resources didn't exist...See cloud build logs...."
+        echo " Relevant resources didn't exist...See cloud build logs......"
       fi
 
 # Copy the result violation result into bucket.
