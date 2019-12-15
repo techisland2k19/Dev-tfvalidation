@@ -13,7 +13,7 @@ steps:
         echo " tf initialization encountered problem..See cloud build logs......"
       fi 
 
-#Pulling service account from secret store to let terraform plan & execute on infra code.Key will be copied into container.
+#Pulling service account from secret store  letting terraform plan & execute on infra code.Key will be copied into container.
 
 - id: Pull a key from GCS & copy temporarily on workspace
   name: 'gcr.io/cloud-builders/gsutil'
