@@ -57,11 +57,10 @@ steps:
   - '-c'
   - |
       if [ -d "consolidated/" ]; then
-          pwd;
-          ls -ltr
-       chmod 755 terraform-validator-linux-amd64;
-       # terraform-validator-linux-amd64 binary downloaded from validator bucket & updated by google opensource on nov 2019
-       ./terraform-validator-linux-amd64 validate consolidated/cloudresources/tfplanoutputv12.tfplan.json --policy-path=consolidated/policy-library/ --project=$PROJECT_ID >> /workspace/violation-results.txt 
+           
+        chmod 755 terraform-validator-linux-amd64;
+        # terraform-validator-linux-amd64 binary downloaded from validator bucket & updated by google opensource on nov 2019
+        ./terraform-validator-linux-amd64 validate consolidated/cloudresources/tfplanoutputv12.tfplan.json --policy-path=consolidated/policy-library/ --project=$PROJECT_ID >> /workspace/violation-results.txt 
         status="$?";
         echo "Status code:$status" >> /workspace/violation-results.txt
         cat /workspace/violation-results.txt
