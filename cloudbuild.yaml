@@ -42,7 +42,7 @@ steps:
   name: 'gcr.io/cloud-builders/gsutil'
   args: ['cp','-r','/workspace/consolidated/cloudresources/tfplanoutputv12.tfplan.json','gs://tfvalidator-res-ep01/$BUILD_ID/tfplanoutputv12.tfplan.json']
 
-# Pull a terraform validator tool from repo & copy temporarily on workspace for execution runtime
+# Pull a terraform validator tool from repo & copy temporarily on /workspace for execution runtime
 
 - id: Pull a terraform validator tool from GCS & copy temporarily on workspace
   name: 'gcr.io/cloud-builders/gsutil'
